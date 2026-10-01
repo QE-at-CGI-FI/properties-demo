@@ -1,0 +1,16 @@
+I have a project here called atm that I was fixing on Tuesday this week. I want a Monday's version of 
+that html app brought to this project, into folder Monday. And today's version of that html app 
+brought to this project, into folder Thursday. Would you be able to do that for me?  
+
+Use playwright-cli to look at Monday and Thursday apps, and build basic property-based testing with 
+default properties for each, into folders Monday-test and Thursday-test. I want to use Bombadil for 
+property-based testing https://antithesishq.github.io/bombadil/index.html
+
+I want to be able to run Monday-test saying 'demo Monday' and Thursday-test by saying 'demo Thursday' 
+on command line. Make my wish come true, like magic!
+
+There's also project here called exploring-bombadil, with full set of tests. Bring those here under Full-test 
+folder. Now, I want to say 'magic Monday' to run this test for 60 seconds on Monday version, and 'magic Thursday' on the Monday version. 
+
+Just for the show of it, create me one playwright tests that uses the properties like I specified for Full-test. 
+Let me run it with 'magic playwright Monday' or 'magic playwright Tuesday'. Run it headful. Make it use webkit as browser.

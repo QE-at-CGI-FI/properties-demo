@@ -1,0 +1,57 @@
+#!/bin/zsh
+# Usage: magic Monday | magic Thursday
+#   Runs the full Bombadil specification (Full-test) for 60 seconds against
+#   that version of the ATM app.
+# Usage: magic playwright Monday | magic playwright Thursday
+#   Runs the Playwright property test (Playwright-test) against that version.
+#
+# Bombadil runs once and stops at the first property violation. Bombadil
+# 0.7.8 occasionally loses contact with Chrome and then hangs forever,
+# ignoring its time limit; a watchdog stops such a run (no restart).
+root="${0:A:h}"
+tool=bombadil
+if [[ "${(L)1}" == playwright ]]; then
+  tool=playwright
+  shift
+fi
+day="${(C)1}"
+if [[ -z "$day" || ! -f "$root/$day/index.html" ]]; then
+  echo "Usage: magic [playwright] <day>   where <day> is one of:"
+  for f in "$root"/*/index.html(N); do echo "  ${f:h:t}"; done
+  exit 1
+fi
+
+if [[ $tool == playwright ]]; then
+  cd "$root/Playwright-test" || exit 1
+  DAY="$day" exec node_modules/.bin/playwright test
+fi
+
+cd "$root/Full-test" || exit 1
+
+seconds=60
+grace=${MAGIC_GRACE:-20}
+
+# Kill a process and everything it started (Bombadil, Chrome, ...).
+killtree() {
+  local child
+  for child in $(pgrep -P $1); do killtree $child; done
+  kill -9 $1 2>/dev/null
+}
+trap 'killtree $pid; killtree $watchdog; exit 130' INT TERM
+
+rm -rf "output/$day"
+node_modules/.bin/bombadil browser test --time-limit=${seconds}s \
+  --exit-on-violation --output-path "output/$day" \
+  "file://$root/$day/index.html" bombadil/specification.ts &
+pid=$!
+( sleep $((seconds + grace)); killtree $pid ) &>/dev/null &
+watchdog=$!
+wait $pid 2>/dev/null
+code=$?
+killtree $watchdog
+# 0 = finished clean, 2 = stopped on a property violation
+if [[ $code -ne 0 && $code -ne 2 ]]; then
+  echo
+  echo "magic: Bombadil stalled or crashed, stopped."
+fi
+exit $code

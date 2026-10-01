@@ -1,0 +1,15 @@
+{
+  "name": "full-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full Bombadil specification for the ATM app, from exploring-with-bombadil, run against the local Monday and Thursday versions",
+  "scripts": {
+    "test:monday": "../magic Monday",
+    "test:thursday": "../magic Thursday",
+    "inspect:monday": "bombadil browser inspect output/Monday",
+    "inspect:thursday": "bombadil browser inspect output/Thursday"
+  },
+  "devDependencies": {
+    "@antithesishq/bombadil": "^0.7.8"
+  }
+}

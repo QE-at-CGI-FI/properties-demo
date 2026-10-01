@@ -1,0 +1,11 @@
+#!/bin/zsh
+# Usage: demo Monday | demo Thursday
+# Runs the Bombadil property-based test for that version of the ATM app.
+root="${0:A:h}"
+day="${(C)1}"
+if [[ -z "$day" || ! -d "$root/$day-test" ]]; then
+  echo "Usage: demo <day>   where <day> is one of:"
+  for d in "$root"/*-test(N/); do echo "  ${${d:t}%-test}"; done
+  exit 1
+fi
+cd "$root/$day-test" && npm test
