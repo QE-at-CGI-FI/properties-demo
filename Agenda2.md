@@ -30,6 +30,8 @@ Three things are worth keeping apart:
 
 Note: authoring with AI, but not running agentic testing. These are deterministic generated tests. Fewer tokens harmed by knowing the difference.
 
+Note: this _manual automation_ demo belongs in a frame of true automation with pipelines.
+
 ## 3. The app under test: before and after this week's fixes
 
 The ATM simulator is a single HTML page: balance, amount field, WITHDRAW, plus DEBUG and ADMIN panels for limits, cash and clock. I fixed bugs in it on Tuesday, so there are two versions side by side:
@@ -138,4 +140,4 @@ Next practice:
 # What I would also want to show you...
 
 - Local LLM use for notetaking and summarizing
-- 2nd brain aka. LLM Wiki, and how that is different from RAG
+- 2nd brain aka. LLM Wiki, and how that is different from RAG. Maybe go Caveman?

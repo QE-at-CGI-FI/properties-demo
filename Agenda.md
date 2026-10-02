@@ -33,7 +33,7 @@ And how:
 # What I would also want to show you...
 
 - Local LLM use for notetaking and summarizing
-- 2nd brain aka. LLM Wiki, and how that is different from RAG
+- 2nd brain aka. LLM Wiki, and how that is different from RAG. Maybe go Caveman?
 
 # Prompt log
 
