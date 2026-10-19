@@ -44,6 +44,10 @@ brought to this project, into folder Thursday. Would you be able to do that for 
 ```
 
 ```
+Bring in antithesis research skill, and use that to identify properties. Or in this case, use what I already created on this on Monday.
+```
+
+```
 Use playwright-cli to look at Monday and Thursday apps, and build basic property-based testing with
 default properties for each, into folders Monday-test and Thursday-test. I want to use Bombadil for
 property-based testing https://antithesishq.github.io/bombadil/index.html

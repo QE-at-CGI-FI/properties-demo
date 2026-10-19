@@ -86,6 +86,8 @@ To test the rules of the ATM, the specification needs to know the domain. `Full-
 20 more properties on top of the four defaults, produced by running the antithesis research skill on the app's source code. The list is in `Full-test/properties.txt`, the reasoning behind each in `Full-test/scratchbook/`.
 
 ```text
+Bring in antithesis research skill, and use that to identify properties. Or in this case, use what I already created on this on Monday.
+
 There's also project here called exploring-bombadil, with full set of tests. Bring those here under Full-test
 folder. Now, I want to say 'magic Monday' to run this test for 60 seconds on Monday version, and 'magic Thursday' on the Monday version.
 ```
