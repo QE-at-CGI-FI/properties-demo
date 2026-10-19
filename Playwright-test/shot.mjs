@@ -1,0 +1,14 @@
+import { webkit } from "playwright";
+const b = await webkit.launch(); const p = await b.newPage({ viewport: { width: 1100, height: 900 } });
+const errs = []; p.on("pageerror", e => errs.push(e.message)); p.on("console", m => m.type() === "error" && errs.push(m.text()));
+await p.goto("file:///Users/maaretp/Documents/cgi-code/properties-demo/properties-demo-testing-report.html");
+await p.waitForTimeout(800);
+console.log("errors:", errs);
+console.log("rows:", await p.locator("#matrix tbody tr").count(), await p.locator("#fbars tbody tr").count(), await p.locator("#covbody tr").count());
+console.log("foot:", await p.locator("#matrix tfoot").innerText());
+const sw = await p.evaluate(() => document.documentElement.scrollWidth);
+await p.setViewportSize({ width: 400, height: 800 }); const sw2 = await p.evaluate(() => document.documentElement.scrollWidth);
+console.log("scrollWidth", sw, sw2);
+await p.setViewportSize({ width: 1100, height: 900 });
+await p.locator("#mut").scrollIntoViewIfNeeded(); await p.screenshot({ path: "report-mut.png" });
+await b.close();

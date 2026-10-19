@@ -1,0 +1,16 @@
+{
+  "name": "mutation-test",
+  "version": "1.0.0",
+  "description": "Mutation testing of the Playwright ATM property test with Stryker",
+  "scripts": {
+    "mutate": "node prepare.mjs && stryker run"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@stryker-mutator/core": "^10.0.0"
+  },
+  "private": true
+}
